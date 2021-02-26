@@ -1,0 +1,12 @@
+modLoader = "javafml"
+loaderVersion = "[36,)"
+license = "GPLv3"
+[[mods]]
+modId = "mythical_artifacts"
+version = "${file.jarVersion}"
+displayName = "Mythical Artifacts"
+displayURL = "https://github.com/DavidQF555/MythicalArtifacts"
+authors = "DavidQF555"
+description = '''
+This mod adds in mythical artifacts.
+'''
