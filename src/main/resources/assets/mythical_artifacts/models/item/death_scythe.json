@@ -1,0 +1,66 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "mythical_artifacts:items/death_scythe"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        -45,
+        -90,
+        0
+      ],
+      "translation": [
+        0,
+        19,
+        3
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        -45,
+        90,
+        0
+      ],
+      "translation": [
+        0,
+        19,
+        3
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -45,
+        -90,
+        0
+      ],
+      "translation": [
+        0,
+        6,
+        0
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -45,
+        90,
+        0
+      ],
+      "translation": [
+        0,
+        6,
+        0
+      ]
+    }
+  }
+}

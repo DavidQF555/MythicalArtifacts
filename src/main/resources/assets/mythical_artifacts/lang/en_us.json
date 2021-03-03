@@ -1,0 +1,10 @@
+{
+  "itemGroup.mythical_artifacts": "Mythical Artifacts",
+  "item.mythical_artifacts.conquest_crown": "Crown of Conquest",
+  "item.mythical_artifacts.death_scythe": "Scythe of Death",
+  "item.mythical_artifacts.famine_scales": "Scales of Famine",
+  "item.mythical_artifacts.famine_scales.lore": "Balances the hunger of nearby entities",
+  "item.mythical_artifacts.war_sword": "Sword of War",
+  "item.mythical_artifacts.war_sword.lore": "Damage increases with each kill",
+  "item.mythical_artifacts.war_sword.kills": "Kills: %s"
+}
