@@ -6,5 +6,6 @@
   "item.mythical_artifacts.famine_scales.lore": "Balances the hunger of nearby entities",
   "item.mythical_artifacts.war_sword": "Sword of War",
   "item.mythical_artifacts.war_sword.lore": "Damage increases with each kill",
-  "item.mythical_artifacts.war_sword.kills": "Kills: %s"
+  "item.mythical_artifacts.war_sword.kills": "Kills: %s",
+  "message.mythical_artifacts.artifact_maxed": "Only %2$s %1$s can be held by players"
 }
