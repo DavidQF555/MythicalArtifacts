@@ -11,7 +11,8 @@ public enum ArtifactType {
     CONQUEST_CROWN(RegistryHandler.CONQUEST_CROWN, 1),
     DEATH_SCYTHE(RegistryHandler.DEATH_SCYTHE, 1),
     FAMINE_SCALES(RegistryHandler.FAMINE_SCALES, 1),
-    WAR_SWORD(RegistryHandler.WAR_SWORD, 1);
+    WAR_SWORD(RegistryHandler.WAR_SWORD, 1),
+    GJOLL(RegistryHandler.GJOLL_ITEM, 1);
 
     private final Supplier<Item> item;
     private final int max;

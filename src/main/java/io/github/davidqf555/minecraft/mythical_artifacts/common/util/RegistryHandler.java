@@ -1,10 +1,10 @@
 package io.github.davidqf555.minecraft.mythical_artifacts.common.util;
 
 import io.github.davidqf555.minecraft.mythical_artifacts.MythicalArtifacts;
-import io.github.davidqf555.minecraft.mythical_artifacts.common.items.ConquestCrown;
-import io.github.davidqf555.minecraft.mythical_artifacts.common.items.DeathScythe;
-import io.github.davidqf555.minecraft.mythical_artifacts.common.items.FamineScales;
-import io.github.davidqf555.minecraft.mythical_artifacts.common.items.WarSword;
+import io.github.davidqf555.minecraft.mythical_artifacts.common.entities.FenrirEntity;
+import io.github.davidqf555.minecraft.mythical_artifacts.common.items.*;
+import net.minecraft.entity.EntityClassification;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.Rarity;
 import net.minecraft.util.ResourceLocation;
@@ -26,6 +26,9 @@ public class RegistryHandler {
     public static final RegistryObject<Item> DEATH_SCYTHE = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "death_scythe"), ForgeRegistries.ITEMS);
     public static final RegistryObject<Item> FAMINE_SCALES = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "famine_scales"), ForgeRegistries.ITEMS);
     public static final RegistryObject<Item> WAR_SWORD = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "war_sword"), ForgeRegistries.ITEMS);
+    public static final RegistryObject<Item> GJOLL_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "gjoll_item"), ForgeRegistries.ITEMS);
+
+    public static final RegistryObject<EntityType<FenrirEntity>> FENRIR_ENTITY = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "fenrir_entity"), ForgeRegistries.ENTITIES);
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -33,7 +36,15 @@ public class RegistryHandler {
                 new ConquestCrown().setRegistryName(MythicalArtifacts.MOD_ID, "conquest_crown"),
                 new DeathScythe(4, -3).setRegistryName(MythicalArtifacts.MOD_ID, "death_scythe"),
                 new FamineScales().setRegistryName(MythicalArtifacts.MOD_ID, "famine_scales"),
-                new WarSword(-1, -2.6f).setRegistryName(MythicalArtifacts.MOD_ID, "war_sword")
+                new WarSword(-1, -2.6f).setRegistryName(MythicalArtifacts.MOD_ID, "war_sword"),
+                new GjollItem().setRegistryName(MythicalArtifacts.MOD_ID, "gjoll_item")
+        );
+    }
+
+    @SubscribeEvent
+    public static void registerEntityTypes(RegistryEvent.Register<EntityType<?>> event) {
+        event.getRegistry().registerAll(
+                EntityType.Builder.create((type, world) -> new FenrirEntity(world), EntityClassification.CREATURE).size(0.6f, 0.85f).build(new ResourceLocation(MythicalArtifacts.MOD_ID, "fenrir_entity").toString()).setRegistryName(MythicalArtifacts.MOD_ID, "fenrir_entity")
         );
     }
 }
