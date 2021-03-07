@@ -2,7 +2,7 @@ package io.github.davidqf555.minecraft.mythical_artifacts.common.world;
 
 import io.github.davidqf555.minecraft.mythical_artifacts.MythicalArtifacts;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.items.ArtifactType;
-import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,6 +13,9 @@ import net.minecraft.server.management.PlayerList;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.WorldSavedData;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 import java.util.EnumMap;
@@ -47,7 +50,7 @@ public class ArtifactData extends WorldSavedData {
                     ServerPlayerEntity player = players.getPlayerByUUID(ids[i]);
                     if (player != null) {
                         int amount = count.getOrDefault(player, 0);
-                        if (amount < getAmount(player.inventory, type.getItem())) {
+                        if (amount < getAmount(player, type.getItem())) {
                             count.put(player, amount + 1);
                         } else {
                             ids[i] = null;
@@ -58,8 +61,16 @@ public class ArtifactData extends WorldSavedData {
         }
     }
 
-    private int getAmount(PlayerInventory inventory, Item item) {
-        return inventory.mainInventory.stream().filter(stack -> stack.getItem().equals(item)).mapToInt(ItemStack::getCount).sum() + inventory.armorInventory.stream().filter(stack -> stack.getItem().equals(item)).mapToInt(ItemStack::getCount).sum() + inventory.offHandInventory.stream().filter(stack -> stack.getItem().equals(item)).mapToInt(ItemStack::getCount).sum();
+    private int getAmount(PlayerEntity player, Item item) {
+        int amount = 0;
+        IItemHandler inventory = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElseGet(ItemStackHandler::new);
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            ItemStack stack = inventory.getStackInSlot(i);
+            if (stack.getItem().equals(item)) {
+                amount += stack.getCount();
+            }
+        }
+        return amount;
     }
 
     public UUID[] getOwners(ArtifactType type) {
