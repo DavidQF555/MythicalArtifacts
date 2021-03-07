@@ -16,7 +16,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class MythicalArtifacts {
 
     public static final String MOD_ID = "mythical_artifacts";
-    public static final ItemGroup GROUP = new ItemGroup("itemGroup." + MOD_ID) {
+    public static final ItemGroup GROUP = new ItemGroup(MOD_ID) {
         @Override
         public ItemStack createIcon() {
             return new ItemStack(Items.GOLDEN_SWORD);
