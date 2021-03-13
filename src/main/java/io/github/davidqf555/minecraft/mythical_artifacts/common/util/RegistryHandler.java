@@ -27,6 +27,7 @@ public class RegistryHandler {
     public static final RegistryObject<Item> FAMINE_SCALES = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "famine_scales"), ForgeRegistries.ITEMS);
     public static final RegistryObject<Item> WAR_SWORD = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "war_sword"), ForgeRegistries.ITEMS);
     public static final RegistryObject<Item> GJOLL_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "gjoll_item"), ForgeRegistries.ITEMS);
+    public static final RegistryObject<Item> PANDORA_BOX_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "pandora_box_item"), ForgeRegistries.ITEMS);
 
     public static final RegistryObject<EntityType<FenrirEntity>> FENRIR_ENTITY = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "fenrir_entity"), ForgeRegistries.ENTITIES);
 
@@ -37,7 +38,8 @@ public class RegistryHandler {
                 new DeathScythe(4, -3).setRegistryName(MythicalArtifacts.MOD_ID, "death_scythe"),
                 new FamineScales().setRegistryName(MythicalArtifacts.MOD_ID, "famine_scales"),
                 new WarSword(-1, -2.6f).setRegistryName(MythicalArtifacts.MOD_ID, "war_sword"),
-                new GjollItem().setRegistryName(MythicalArtifacts.MOD_ID, "gjoll_item")
+                new GjollItem().setRegistryName(MythicalArtifacts.MOD_ID, "gjoll_item"),
+                new PandoraBoxItem().setRegistryName(MythicalArtifacts.MOD_ID, "pandora_box_item")
         );
     }
 

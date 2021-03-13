@@ -10,5 +10,6 @@
   "message.mythical_artifacts.artifact_maxed": "Only %2$s %1$s can be held by players",
   "item.mythical_artifacts.gjoll_item": "Gjöll",
   "item.mythical_artifacts.gjoll_item.lore": "Fenrir is bound to Gjöll",
-  "entity.mythical_artifacts.fenrir_entity": "Fenrir"
+  "entity.mythical_artifacts.fenrir_entity": "Fenrir",
+  "item.mythical_artifacts.pandora_box_item": "Pandora's Box"
 }
