@@ -22,10 +22,10 @@ public class RegistryHandler {
     public static final Rarity ARTIFACT_RARITY = Rarity.create(MythicalArtifacts.MOD_ID + ":artifact_rarity", TextFormatting.RED);
     public static final Style LORE_STYLE = Style.EMPTY.setFormatting(TextFormatting.DARK_PURPLE).setItalic(true);
 
-    public static final RegistryObject<Item> CONQUEST_CROWN = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "conquest_crown"), ForgeRegistries.ITEMS);
-    public static final RegistryObject<Item> DEATH_SCYTHE = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "death_scythe"), ForgeRegistries.ITEMS);
-    public static final RegistryObject<Item> FAMINE_SCALES = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "famine_scales"), ForgeRegistries.ITEMS);
-    public static final RegistryObject<Item> WAR_SWORD = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "war_sword"), ForgeRegistries.ITEMS);
+    public static final RegistryObject<Item> CONQUEST_CROWN_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "conquest_crown_item"), ForgeRegistries.ITEMS);
+    public static final RegistryObject<Item> DEATH_SCYTHE_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "death_scythe_item"), ForgeRegistries.ITEMS);
+    public static final RegistryObject<Item> FAMINE_SCALES_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "famine_scales_item"), ForgeRegistries.ITEMS);
+    public static final RegistryObject<Item> WAR_SWORD_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "war_sword_item"), ForgeRegistries.ITEMS);
     public static final RegistryObject<Item> GJOLL_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "gjoll_item"), ForgeRegistries.ITEMS);
     public static final RegistryObject<Item> PANDORA_BOX_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "pandora_box_item"), ForgeRegistries.ITEMS);
 
@@ -34,10 +34,10 @@ public class RegistryHandler {
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
         event.getRegistry().registerAll(
-                new ConquestCrown().setRegistryName(MythicalArtifacts.MOD_ID, "conquest_crown"),
-                new DeathScythe(4, -3).setRegistryName(MythicalArtifacts.MOD_ID, "death_scythe"),
-                new FamineScales().setRegistryName(MythicalArtifacts.MOD_ID, "famine_scales"),
-                new WarSword(-1, -2.6f).setRegistryName(MythicalArtifacts.MOD_ID, "war_sword"),
+                new ConquestCrownItem().setRegistryName(MythicalArtifacts.MOD_ID, "conquest_crown_item"),
+                new DeathScytheItem(4, -3).setRegistryName(MythicalArtifacts.MOD_ID, "death_scythe_item"),
+                new FamineScalesItem().setRegistryName(MythicalArtifacts.MOD_ID, "famine_scales_item"),
+                new WarSwordItem(-1, -2.6f).setRegistryName(MythicalArtifacts.MOD_ID, "war_sword_item"),
                 new GjollItem().setRegistryName(MythicalArtifacts.MOD_ID, "gjoll_item"),
                 new PandoraBoxItem().setRegistryName(MythicalArtifacts.MOD_ID, "pandora_box_item")
         );

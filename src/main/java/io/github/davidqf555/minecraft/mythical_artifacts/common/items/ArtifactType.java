@@ -8,10 +8,10 @@ import java.util.function.Supplier;
 
 public enum ArtifactType {
 
-    CONQUEST_CROWN(RegistryHandler.CONQUEST_CROWN, 1),
-    DEATH_SCYTHE(RegistryHandler.DEATH_SCYTHE, 1),
-    FAMINE_SCALES(RegistryHandler.FAMINE_SCALES, 1),
-    WAR_SWORD(RegistryHandler.WAR_SWORD, 1),
+    CONQUEST_CROWN(RegistryHandler.CONQUEST_CROWN_ITEM, 1),
+    DEATH_SCYTHE(RegistryHandler.DEATH_SCYTHE_ITEM, 1),
+    FAMINE_SCALES(RegistryHandler.FAMINE_SCALES_ITEM, 1),
+    WAR_SWORD(RegistryHandler.WAR_SWORD_ITEM, 1),
     GJOLL(RegistryHandler.GJOLL_ITEM, 1),
     PANDORA_BOX(RegistryHandler.PANDORA_BOX_ITEM, 1);
 

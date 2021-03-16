@@ -3,7 +3,7 @@ package io.github.davidqf555.minecraft.mythical_artifacts.common.util;
 import io.github.davidqf555.minecraft.mythical_artifacts.MythicalArtifacts;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.entities.FenrirEntity;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.items.ArtifactType;
-import io.github.davidqf555.minecraft.mythical_artifacts.common.items.WarSword;
+import io.github.davidqf555.minecraft.mythical_artifacts.common.items.WarSwordItem;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.world.ArtifactData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -39,7 +39,7 @@ public class EventBusSubscriber {
             Entity source = event.getSource().getTrueSource();
             if (source instanceof LivingEntity && !event.isCanceled()) {
                 ItemStack sword = ((LivingEntity) source).getHeldItem(((LivingEntity) source).getActiveHand());
-                if (sword.getItem() instanceof WarSword) {
+                if (sword.getItem() instanceof WarSwordItem) {
                     CompoundNBT tag = sword.getOrCreateChildTag(MythicalArtifacts.MOD_ID);
                     int init = tag.contains("Kills", Constants.NBT.TAG_INT) ? tag.getInt("Kills") : 0;
                     tag.putInt("Kills", init + 1);

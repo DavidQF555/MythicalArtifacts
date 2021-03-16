@@ -21,12 +21,12 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class WarSword extends SwordItem {
+public class WarSwordItem extends SwordItem {
 
-    private static final TranslationTextComponent LORE = new TranslationTextComponent("item." + MythicalArtifacts.MOD_ID + ".war_sword.lore");
-    private static final String KILLS_KEY = "item." + MythicalArtifacts.MOD_ID + ".war_sword.kills";
+    private static final TranslationTextComponent LORE = new TranslationTextComponent("item." + MythicalArtifacts.MOD_ID + ".war_sword_item.lore");
+    private static final String KILLS_KEY = "item." + MythicalArtifacts.MOD_ID + ".war_sword_item.kills";
 
-    public WarSword(int damage, float speed) {
+    public WarSwordItem(int damage, float speed) {
         super(ItemTier.NETHERITE, damage, speed, new Item.Properties()
                 .rarity(RegistryHandler.ARTIFACT_RARITY)
                 .group(MythicalArtifacts.GROUP)

@@ -19,11 +19,11 @@ import java.util.function.Consumer;
 
 ;
 
-public class ConquestCrown extends ArmorItem {
+public class ConquestCrownItem extends ArmorItem {
 
     private static final int LEVEL = 3;
 
-    public ConquestCrown() {
+    public ConquestCrownItem() {
         super(ArmorMaterial.DIAMOND, EquipmentSlotType.HEAD, new Item.Properties()
                 .rarity(RegistryHandler.ARTIFACT_RARITY)
                 .group(MythicalArtifacts.GROUP)

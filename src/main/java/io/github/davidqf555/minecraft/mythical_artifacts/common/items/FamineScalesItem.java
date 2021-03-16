@@ -25,15 +25,15 @@ import java.util.List;
 import java.util.function.Consumer;
 
 @ParametersAreNonnullByDefault
-public class FamineScales extends Item {
+public class FamineScalesItem extends Item {
 
-    private static final TranslationTextComponent LORE = new TranslationTextComponent("item." + MythicalArtifacts.MOD_ID + ".famine_scales.lore");
+    private static final TranslationTextComponent LORE = new TranslationTextComponent("item." + MythicalArtifacts.MOD_ID + ".famine_scales_item.lore");
     private static final int COOLDOWN = 1000;
     private static final int DURATION = 100;
     private static final int LEVEL = 1;
     private static final int RANGE = 5;
 
-    public FamineScales() {
+    public FamineScalesItem() {
         super(new Item.Properties()
                 .maxStackSize(1)
                 .rarity(RegistryHandler.ARTIFACT_RARITY)

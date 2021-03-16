@@ -12,12 +12,12 @@ import net.minecraft.potion.Effects;
 
 import java.util.function.Consumer;
 
-public class DeathScythe extends SwordItem {
+public class DeathScytheItem extends SwordItem {
 
     private static final int DURATION = 100;
     private static final int LEVEL = 1;
 
-    public DeathScythe(int damage, float speed) {
+    public DeathScytheItem(int damage, float speed) {
         super(ItemTier.NETHERITE, damage, speed, new Item.Properties()
                 .rarity(RegistryHandler.ARTIFACT_RARITY)
                 .group(MythicalArtifacts.GROUP)
