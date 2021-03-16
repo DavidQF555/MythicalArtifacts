@@ -1,6 +1,7 @@
 package io.github.davidqf555.minecraft.mythical_artifacts.common.util;
 
 import io.github.davidqf555.minecraft.mythical_artifacts.MythicalArtifacts;
+import io.github.davidqf555.minecraft.mythical_artifacts.common.entities.FenrirEntity;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.items.ArtifactType;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.items.WarSword;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.world.ArtifactData;
@@ -15,6 +16,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -114,6 +116,15 @@ public class EventBusSubscriber {
                     event.player.sendMessage(new TranslationTextComponent(ARTIFACT_MAXED_KEY, new StringTextComponent("[").append(artifact.getItem().getName()).appendString("]").mergeStyle(TextFormatting.RED), artifact.getMaxAmount()).mergeStyle(TextFormatting.DARK_RED), Util.DUMMY_UUID);
                 }
             }
+        }
+    }
+
+    @Mod.EventBusSubscriber(modid = MythicalArtifacts.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ModBus {
+
+        @SubscribeEvent
+        public static void onEntityAttributeCreation(EntityAttributeCreationEvent event) {
+            event.put(RegistryHandler.FENRIR_ENTITY.get(), FenrirEntity.setAttributes().create());
         }
     }
 }
