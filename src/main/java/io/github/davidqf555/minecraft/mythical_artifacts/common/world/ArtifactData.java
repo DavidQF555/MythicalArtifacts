@@ -61,6 +61,15 @@ public class ArtifactData extends WorldSavedData {
         }
     }
 
+    public boolean isFull(ArtifactType type) {
+        for (UUID id : owners.get(type)) {
+            if (id == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private int getAmount(PlayerEntity player, Item item) {
         int amount = 0;
         IItemHandler inventory = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElseGet(ItemStackHandler::new);

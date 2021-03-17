@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "mythical_artifacts:items/war_sword_item"
+    "layer0": "mythical_artifacts:item/war_sword_item"
   }
 }

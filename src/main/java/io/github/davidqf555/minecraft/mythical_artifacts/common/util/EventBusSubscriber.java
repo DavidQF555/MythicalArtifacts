@@ -5,6 +5,7 @@ import io.github.davidqf555.minecraft.mythical_artifacts.common.entities.FenrirE
 import io.github.davidqf555.minecraft.mythical_artifacts.common.items.ArtifactType;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.items.WarSwordItem;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.world.ArtifactData;
+import io.github.davidqf555.minecraft.mythical_artifacts.common.world.gen.GjollFeature;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -13,11 +14,14 @@ import net.minecraft.util.Util;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -115,6 +119,13 @@ public class EventBusSubscriber {
                 for (ArtifactType artifact : messages) {
                     event.player.sendMessage(new TranslationTextComponent(ARTIFACT_MAXED_KEY, new StringTextComponent("[").append(artifact.getItem().getName()).appendString("]").mergeStyle(TextFormatting.RED), artifact.getMaxAmount()).mergeStyle(TextFormatting.DARK_RED), Util.DUMMY_UUID);
                 }
+            }
+        }
+
+        @SubscribeEvent
+        public static void onBiomeLoading(BiomeLoadingEvent event) {
+            if (event.getCategory() == Biome.Category.ICY && event.getCategory() != Biome.Category.OCEAN && event.getCategory() != Biome.Category.RIVER) {
+                event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_DECORATION).add(GjollFeature.FEATURE);
             }
         }
     }

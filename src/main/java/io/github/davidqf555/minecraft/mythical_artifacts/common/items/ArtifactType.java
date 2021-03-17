@@ -15,10 +15,10 @@ public enum ArtifactType {
     GJOLL(RegistryHandler.GJOLL_ITEM, 1),
     PANDORA_BOX(RegistryHandler.PANDORA_BOX_ITEM, 1);
 
-    private final Supplier<Item> item;
+    private final Supplier<? extends Item> item;
     private final int max;
 
-    ArtifactType(Supplier<Item> item, int max) {
+    ArtifactType(Supplier<? extends Item> item, int max) {
         this.item = item;
         this.max = max;
     }

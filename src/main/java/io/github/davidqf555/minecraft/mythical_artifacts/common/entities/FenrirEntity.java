@@ -1,12 +1,14 @@
 package io.github.davidqf555.minecraft.mythical_artifacts.common.entities;
 
 import io.github.davidqf555.minecraft.mythical_artifacts.MythicalArtifacts;
+import io.github.davidqf555.minecraft.mythical_artifacts.common.blocks.GjollBlock;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.util.RegistryHandler;
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,10 +16,13 @@ import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.IntArrayNBT;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityPredicates;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.util.Constants;
@@ -34,9 +39,11 @@ public class FenrirEntity extends WolfEntity {
 
     private static final int RESPAWN = 1200;
     private static final int PARTICLES = 4;
+    private BlockPos gjoll;
 
     public FenrirEntity(World worldIn) {
         super(RegistryHandler.FENRIR_ENTITY.get(), worldIn);
+        gjoll = null;
     }
 
     public static AttributeModifierMap.MutableAttribute setAttributes() {
@@ -48,10 +55,19 @@ public class FenrirEntity extends WolfEntity {
     }
 
     @Override
+    public void registerGoals() {
+        super.registerGoals();
+        targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, EntityPredicates.CAN_HOSTILE_AI_TARGET::test));
+    }
+
+    @Override
     public void livingTick() {
+        if (gjoll != null && getDistanceSq(gjoll.getX(), gjoll.getY(), gjoll.getZ()) > GjollBlock.SUMMON_RADIUS * GjollBlock.SUMMON_RADIUS) {
+            gjoll = null;
+        }
         if (world instanceof ServerWorld) {
             LivingEntity owner = getOwner();
-            if (owner == null || getGjoll(owner).isEmpty()) {
+            if ((owner == null || getGjoll(owner).isEmpty()) && (gjoll == null || !(world.getBlockState(gjoll).getBlock() instanceof GjollBlock))) {
                 remove();
             }
         } else {
@@ -61,6 +77,14 @@ public class FenrirEntity extends WolfEntity {
             }
         }
         super.livingTick();
+    }
+
+    public BlockPos getGjoll() {
+        return gjoll;
+    }
+
+    public void setGjoll(BlockPos pos) {
+        gjoll = pos;
     }
 
     private ItemStack getGjoll(LivingEntity entity) {
@@ -120,6 +144,24 @@ public class FenrirEntity extends WolfEntity {
             return ActionResultType.SUCCESS;
         }
         return ActionResultType.PASS;
+    }
+
+    @Override
+    public void writeAdditional(CompoundNBT compound) {
+        super.writeAdditional(compound);
+        if (gjoll != null) {
+            IntArrayNBT nbt = new IntArrayNBT(new int[]{gjoll.getX(), gjoll.getY(), gjoll.getZ()});
+            compound.put("Gjoll", nbt);
+        }
+    }
+
+    @Override
+    public void readAdditional(CompoundNBT compound) {
+        super.readAdditional(compound);
+        if (compound.contains("Gjoll", Constants.NBT.TAG_INT_ARRAY)) {
+            IntArrayNBT nbt = (IntArrayNBT) compound.get("Gjoll");
+            gjoll = new BlockPos(nbt.get(0).getInt(), nbt.get(1).getInt(), nbt.get(2).getInt());
+        }
     }
 
     @Override
