@@ -13,6 +13,7 @@ import net.minecraft.server.management.PlayerList;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraft.world.storage.WorldSavedData;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
@@ -89,9 +90,9 @@ public class ArtifactData extends WorldSavedData {
     @Override
     public void read(CompoundNBT nbt) {
         for (String key : nbt.keySet()) {
-            ArtifactType type = ArtifactType.get(key);
+            ArtifactType type = ArtifactType.valueOf(key);
             UUID[] ids = owners.get(type);
-            ListNBT list = (ListNBT) nbt.get(key);
+            ListNBT list = nbt.getList(key, Constants.NBT.TAG_INT_ARRAY);
             int length = Math.min(ids.length, list.size());
             for (int i = 0; i < length; i++) {
                 ids[i] = NBTUtil.readUniqueId(list.get(i));
@@ -109,7 +110,7 @@ public class ArtifactData extends WorldSavedData {
                     list.add(NBTUtil.func_240626_a_(id));
                 }
             }
-            compound.put(type.toString(), list);
+            compound.put(type.name(), list);
         }
         return compound;
     }

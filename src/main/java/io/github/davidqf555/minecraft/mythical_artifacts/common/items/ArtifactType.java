@@ -3,7 +3,6 @@ package io.github.davidqf555.minecraft.mythical_artifacts.common.items;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.util.RegistryHandler;
 import net.minecraft.item.Item;
 
-import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
 public enum ArtifactType {
@@ -23,16 +22,6 @@ public enum ArtifactType {
         this.max = max;
     }
 
-    @Nullable
-    public static ArtifactType get(String name) {
-        for (ArtifactType type : values()) {
-            if (type.toString().equals(name)) {
-                return type;
-            }
-        }
-        return null;
-    }
-
     public Item getItem() {
         return item.get();
     }
@@ -41,8 +30,4 @@ public enum ArtifactType {
         return max;
     }
 
-    @Override
-    public String toString() {
-        return getItem().toString();
-    }
 }

@@ -15,6 +15,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
@@ -40,6 +41,8 @@ public class RegistryHandler {
     public static final RegistryObject<GjollBlock> GJOLL_BLOCK = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "gjoll_block"), ForgeRegistries.BLOCKS);
 
     public static final RegistryObject<GjollFeature> GJOLL_FEATURE = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "gjoll_feature"), ForgeRegistries.FEATURES);
+
+    public static final RegistryObject<GlobalLootModifierSerializer<HorsemenLootModifier>> HORSEMEN_LOOT_MODIFIER_SERIALIZER = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "horsemen_loot_modifier"), ForgeRegistries.LOOT_MODIFIER_SERIALIZERS);
 
     @SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event) {
@@ -72,6 +75,13 @@ public class RegistryHandler {
     public static void registerFeatures(RegistryEvent.Register<Feature<?>> event) {
         event.getRegistry().registerAll(
                 new GjollFeature().setRegistryName(MythicalArtifacts.MOD_ID, "gjoll_feature")
+        );
+    }
+
+    @SubscribeEvent
+    public static void registerGlobalLootModifierSerializers(RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
+        event.getRegistry().registerAll(
+                new HorsemenLootModifier.Serializer().setRegistryName(MythicalArtifacts.MOD_ID, "horsemen_loot_modifier")
         );
     }
 }
