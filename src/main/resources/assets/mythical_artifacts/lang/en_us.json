@@ -12,5 +12,9 @@
   "item.mythical_artifacts.gjoll_item.lore": "Fenrir is bound to Gjöll",
   "entity.mythical_artifacts.fenrir_entity": "Fenrir",
   "item.mythical_artifacts.pandora_box_item": "Pandora's Box",
+  "item.mythical_artifacts.pandora_box_item.lore": "Unleashes evil into the world",
+  "item.mythical_artifacts.containment_box_item": "Containment Box",
+  "item.mythical_artifacts.containment_box_item.filled": "%s%% filled",
+  "item.mythical_artifacts.containment_box_item.lore": "Captures Monsters",
   "block.mythical_artifacts.gjoll_block": "Gjöll"
 }

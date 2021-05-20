@@ -35,6 +35,7 @@ public class RegistryHandler {
     public static final RegistryObject<GjollItem> GJOLL_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "gjoll_item"), ForgeRegistries.ITEMS);
     public static final RegistryObject<PandoraBoxItem> PANDORA_BOX_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "pandora_box_item"), ForgeRegistries.ITEMS);
     public static final RegistryObject<BlockItem> GJOLL_BLOCK_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "gjoll_block_item"), ForgeRegistries.ITEMS);
+    public static final RegistryObject<ContainmentBoxItem> CONTAINMENT_BOX_ITEM = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "containment_box_item"), ForgeRegistries.ITEMS);
 
     public static final RegistryObject<EntityType<FenrirEntity>> FENRIR_ENTITY = RegistryObject.of(new ResourceLocation(MythicalArtifacts.MOD_ID, "fenrir_entity"), ForgeRegistries.ENTITIES);
 
@@ -53,6 +54,7 @@ public class RegistryHandler {
                 new WarSwordItem(-1, -2.6f).setRegistryName(MythicalArtifacts.MOD_ID, "war_sword_item"),
                 new GjollItem().setRegistryName(MythicalArtifacts.MOD_ID, "gjoll_item"),
                 new PandoraBoxItem().setRegistryName(MythicalArtifacts.MOD_ID, "pandora_box_item"),
+                new ContainmentBoxItem().setRegistryName(MythicalArtifacts.MOD_ID, "containment_box_item"),
                 new BlockItem(RegistryHandler.GJOLL_BLOCK.get(), new Item.Properties().group(MythicalArtifacts.GROUP)).setRegistryName(MythicalArtifacts.MOD_ID, "gjoll_block_item")
         );
     }

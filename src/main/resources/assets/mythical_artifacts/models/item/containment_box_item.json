@@ -1,9 +1,8 @@
 {
   "parent": "block/block",
   "textures": {
-    "top": "mythical_artifacts:item/pandora_box_item_top",
-    "side": "mythical_artifacts:item/pandora_box_item_side",
-    "bottom": "mythical_artifacts:item/pandora_box_item_bottom"
+    "top": "mythical_artifacts:item/containment_box_item_top",
+    "side": "mythical_artifacts:item/containment_box_item_side"
   },
   "elements": [
     {
@@ -25,7 +24,7 @@
             16,
             16
           ],
-          "texture": "#bottom"
+          "texture": "#top"
         },
         "up": {
           "uv": [
@@ -73,14 +72,6 @@
           "texture": "#side"
         }
       }
-    }
-  ],
-  "overrides": [
-    {
-      "predicate": {
-        "mythical_artifacts:opened": 1
-      },
-      "model": "mythical_artifacts:item/pandora_box_item_opened"
     }
   ]
 }

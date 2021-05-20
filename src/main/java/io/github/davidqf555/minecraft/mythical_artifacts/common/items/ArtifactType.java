@@ -1,5 +1,6 @@
 package io.github.davidqf555.minecraft.mythical_artifacts.common.items;
 
+import io.github.davidqf555.minecraft.mythical_artifacts.MythicalArtifacts;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.util.RegistryHandler;
 import net.minecraft.item.Item;
 
@@ -14,6 +15,7 @@ public enum ArtifactType {
     GJOLL(RegistryHandler.GJOLL_ITEM, 1),
     PANDORA_BOX(RegistryHandler.PANDORA_BOX_ITEM, 1);
 
+    public static final String MAXED_KEY = "message." + MythicalArtifacts.MOD_ID + ".artifact_maxed";
     private final Supplier<? extends Item> item;
     private final int max;
 

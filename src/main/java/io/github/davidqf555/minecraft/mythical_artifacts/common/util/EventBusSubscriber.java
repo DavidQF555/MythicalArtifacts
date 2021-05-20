@@ -3,11 +3,13 @@ package io.github.davidqf555.minecraft.mythical_artifacts.common.util;
 import io.github.davidqf555.minecraft.mythical_artifacts.MythicalArtifacts;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.entities.FenrirEntity;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.items.ArtifactType;
+import io.github.davidqf555.minecraft.mythical_artifacts.common.items.ContainmentBoxItem;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.items.WarSwordItem;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.world.ArtifactData;
 import io.github.davidqf555.minecraft.mythical_artifacts.common.world.gen.GjollFeature;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Util;
@@ -33,8 +35,6 @@ import java.util.*;
 
 public class EventBusSubscriber {
 
-    private static final String ARTIFACT_MAXED_KEY = "message." + MythicalArtifacts.MOD_ID + ".artifact_maxed";
-
     @Mod.EventBusSubscriber(modid = MythicalArtifacts.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
     public static class ForgeBus {
 
@@ -47,6 +47,19 @@ public class EventBusSubscriber {
                     CompoundNBT tag = sword.getOrCreateChildTag(MythicalArtifacts.MOD_ID);
                     int init = tag.contains("Kills", Constants.NBT.TAG_INT) ? tag.getInt("Kills") : 0;
                     tag.putInt("Kills", init + 1);
+                }
+                LivingEntity entity = event.getEntityLiving();
+                if (entity instanceof MonsterEntity) {
+                    IItemHandler inventory = source.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElseGet(ItemStackHandler::new);
+                    for (int i = 0; i < inventory.getSlots(); i++) {
+                        ItemStack stack = inventory.getStackInSlot(i);
+                        if (stack.getItem() instanceof ContainmentBoxItem) {
+                            CompoundNBT tag = stack.getOrCreateChildTag(MythicalArtifacts.MOD_ID);
+                            int init = tag.contains("Filled", Constants.NBT.TAG_INT) ? tag.getInt("Filled") : 0;
+                            tag.putInt("Filled", init + ContainmentBoxItem.getFillAmount(entity));
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -117,7 +130,7 @@ public class EventBusSubscriber {
                     }
                 }
                 for (ArtifactType artifact : messages) {
-                    event.player.sendMessage(new TranslationTextComponent(ARTIFACT_MAXED_KEY, new StringTextComponent("[").append(artifact.getItem().getName()).appendString("]").mergeStyle(TextFormatting.RED), artifact.getMaxAmount()).mergeStyle(TextFormatting.DARK_RED), Util.DUMMY_UUID);
+                    event.player.sendMessage(new TranslationTextComponent(ArtifactType.MAXED_KEY, new StringTextComponent("[").append(artifact.getItem().getName()).appendString("]").mergeStyle(TextFormatting.RED), artifact.getMaxAmount()).mergeStyle(TextFormatting.DARK_RED), Util.DUMMY_UUID);
                 }
             }
         }
