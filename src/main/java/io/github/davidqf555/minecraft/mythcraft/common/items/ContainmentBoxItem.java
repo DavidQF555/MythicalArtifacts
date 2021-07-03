@@ -45,7 +45,7 @@ public class ContainmentBoxItem extends Item {
         tooltip.add(new TranslationTextComponent(FILLED_KEY, getPercentFilled(stack)).mergeStyle(TextFormatting.GREEN));
         CompoundNBT tag = stack.getOrCreateChildTag(MythCraft.MOD_ID);
         if (tag.contains("Full", Constants.NBT.TAG_BYTE) && tag.getBoolean("Full")) {
-            tooltip.add(new TranslationTextComponent(ArtifactType.MAXED_KEY, new StringTextComponent("[").append(ArtifactType.PANDORA_BOX.getItem().getName()).appendString("]"), ArtifactType.PANDORA_BOX.getMaxAmount()).mergeStyle(TextFormatting.DARK_RED));
+            tooltip.add(new TranslationTextComponent(ArtifactType.MAXED_KEY, new StringTextComponent("[").appendSibling(ArtifactType.PANDORA_BOX.getItem().getName()).appendString("]"), ArtifactType.PANDORA_BOX.getMaxAmount()).mergeStyle(TextFormatting.DARK_RED));
         }
     }
 

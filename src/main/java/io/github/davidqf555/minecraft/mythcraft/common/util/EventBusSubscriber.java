@@ -130,7 +130,7 @@ public class EventBusSubscriber {
                     }
                 }
                 for (ArtifactType artifact : messages) {
-                    event.player.sendMessage(new TranslationTextComponent(ArtifactType.MAXED_KEY, new StringTextComponent("[").append(artifact.getItem().getName()).appendString("]").mergeStyle(TextFormatting.RED), artifact.getMaxAmount()).mergeStyle(TextFormatting.DARK_RED), Util.DUMMY_UUID);
+                    event.player.sendMessage(new TranslationTextComponent(ArtifactType.MAXED_KEY, new StringTextComponent("[").appendSibling(artifact.getItem().getName()).appendString("]").mergeStyle(TextFormatting.RED), artifact.getMaxAmount()).mergeStyle(TextFormatting.DARK_RED), Util.DUMMY_UUID);
                 }
             }
         }

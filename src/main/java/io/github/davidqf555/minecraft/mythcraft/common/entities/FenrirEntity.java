@@ -47,7 +47,7 @@ public class FenrirEntity extends WolfEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute setAttributes() {
-        return WolfEntity.func_234233_eS_()
+        return WolfEntity.registerAttributes()
                 .createMutableAttribute(Attributes.ARMOR, 10)
                 .createMutableAttribute(Attributes.MAX_HEALTH, 20)
                 .createMutableAttribute(Attributes.ATTACK_DAMAGE, 8)
@@ -133,7 +133,7 @@ public class FenrirEntity extends WolfEntity {
     }
 
     @Override
-    public ActionResultType func_230254_b_(PlayerEntity player, Hand hand) {
+    public ActionResultType getEntityInteractionResult(PlayerEntity player, Hand hand) {
         ItemStack stack = player.getHeldItem(hand);
         Item item = stack.getItem();
         if (item.isFood() && item.getFood().isMeat() && this.getHealth() < this.getMaxHealth()) {
@@ -180,7 +180,7 @@ public class FenrirEntity extends WolfEntity {
     }
 
     @Override
-    public boolean isSitting() {
+    public boolean isQueuedToSit() {
         return false;
     }
 

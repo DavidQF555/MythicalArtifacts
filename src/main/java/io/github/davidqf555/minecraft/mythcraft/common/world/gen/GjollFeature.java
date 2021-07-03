@@ -21,12 +21,12 @@ import java.util.function.Supplier;
 @ParametersAreNonnullByDefault
 public class GjollFeature extends Feature<NoFeatureConfig> {
 
-    public static final Supplier<ConfiguredFeature<?, ?>> FEATURE = () -> RegistryHandler.GJOLL_FEATURE.get().withConfiguration(NoFeatureConfig.field_236559_b_).chance(150);
+    public static final Supplier<ConfiguredFeature<?, ?>> FEATURE = () -> RegistryHandler.GJOLL_FEATURE.get().withConfiguration(NoFeatureConfig.INSTANCE).chance(150);
     private static final int MIN_DEPTH = 1;
     private static final int MAX_DEPTH = 5;
 
     public GjollFeature() {
-        super(NoFeatureConfig.field_236558_a_);
+        super(NoFeatureConfig.CODEC);
     }
 
     @Override
