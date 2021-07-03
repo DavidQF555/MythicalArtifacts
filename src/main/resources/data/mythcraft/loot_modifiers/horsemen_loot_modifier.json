@@ -1,0 +1,17 @@
+{
+  "conditions": [
+    {
+      "condition": "entity_properties",
+      "entity": "this",
+      "predicate": {
+        "vehicle": {
+          "type": "#mythcraft:horse"
+        }
+      }
+    },
+    {
+      "condition": "random_chance",
+      "chance": 0.25
+    }
+  ]
+}

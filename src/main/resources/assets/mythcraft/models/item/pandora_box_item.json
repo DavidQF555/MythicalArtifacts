@@ -1,0 +1,86 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "top": "mythcraft:item/pandora_box_item_top",
+    "side": "mythcraft:item/pandora_box_item_side",
+    "bottom": "mythcraft:item/pandora_box_item_bottom"
+  },
+  "elements": [
+    {
+      "from": [
+        2,
+        2,
+        2
+      ],
+      "to": [
+        14,
+        14,
+        14
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#bottom"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#top"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#side"
+        }
+      }
+    }
+  ],
+  "overrides": [
+    {
+      "predicate": {
+        "mythical_artifacts:opened": 1
+      },
+      "model": "mythical_artifacts:item/pandora_box_item_opened"
+    }
+  ]
+}

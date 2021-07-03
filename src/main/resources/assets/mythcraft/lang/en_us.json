@@ -1,0 +1,20 @@
+{
+  "itemGroup.mythcraft": "MythCraft",
+  "item.mythcraft.conquest_crown_item": "Crown of Conquest",
+  "item.mythcraft.death_scythe_item": "Scythe of Death",
+  "item.mythcraft.famine_scales_item": "Scales of Famine",
+  "item.mythcraft.famine_scales_item.lore": "Balances the hunger of nearby entities",
+  "item.mythcraft.war_sword_item": "Sword of War",
+  "item.mythcraft.war_sword_item.lore": "Damage increases with each kill",
+  "item.mythcraft.war_sword_item.kills": "Kills: %s",
+  "message.mythcraft.artifact_maxed": "Only %2$s %1$s can be held by players",
+  "item.mythcraft.gjoll_item": "Gjöll",
+  "item.mythcraft.gjoll_item.lore": "Fenrir is bound to Gjöll",
+  "entity.mythcraft.fenrir_entity": "Fenrir",
+  "item.mythcraft.pandora_box_item": "Pandora's Box",
+  "item.mythcraft.pandora_box_item.lore": "Unleashes evil into the world",
+  "item.mythcraft.containment_box_item": "Containment Box",
+  "item.mythcraft.containment_box_item.filled": "%s%% filled",
+  "item.mythcraft.containment_box_item.lore": "Captures Monsters",
+  "block.mythcraft.gjoll_block": "Gjöll"
+}

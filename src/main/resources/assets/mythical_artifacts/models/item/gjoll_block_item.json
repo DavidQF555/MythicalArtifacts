@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "mythical_artifacts:block/gjoll_block"
-  }
-}

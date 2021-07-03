@@ -2,9 +2,9 @@ modLoader = "javafml"
 loaderVersion = "[36,)"
 license = "GPLv3"
 [[mods]]
-modId = "mythical_artifacts"
+modId = "mythcraft"
 version = "${file.jarVersion}"
-displayName = "Mythical Artifacts"
-displayURL = "https://github.com/DavidQF555/MythicalArtifacts"
+displayName = "MythCraft"
+displayURL = "https://github.com/DavidQF555/MythCraft"
 authors = "DavidQF555"
-description = 'This mod adds in mythical artifacts. '
+description = 'This mod adds in features from mythology. '
